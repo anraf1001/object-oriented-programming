@@ -4,7 +4,8 @@
 
 class Island {
 public:
-    Coordinates getPosition() { return position_; }
+    Coordinates getPosition() const { return position_; }
+
 
 private:
     Coordinates position_;
