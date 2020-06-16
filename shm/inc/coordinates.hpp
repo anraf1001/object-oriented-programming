@@ -5,7 +5,8 @@ public:
     Coordinates(int positionX, int positionY)
         : positionX_(positionX), positionY_(positionY) {}
 
-    bool operator==(const Coordinates& coordToCheck);
+    bool operator==(const Coordinates& coordToCheck) const;
+
 
 private:
     int positionX_;
