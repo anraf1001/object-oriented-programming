@@ -19,15 +19,18 @@ public:
     Ship& operator-=(size_t num);
     Ship& operator+=(size_t num);
 
+    size_t getmaxCapacity() const { return maxCapacity_; }
     size_t getCapacity() const { return capacity_; }
     size_t getMaxCrew() const { return maxCrew_; }
     size_t getSpeed() const { return speed_; }
     std::string getName() const { return name_; }
     size_t getId() const { return id_; }
+
     Cargo getCargo(size_t index) const;
 
 private:
     std::vector<Cargo> cargo_;
+    size_t maxCapacity_;
     size_t capacity_;
     size_t maxCrew_;
     size_t crew_;
