@@ -18,7 +18,6 @@ public:
     Ship& operator-=(size_t num);
     Ship& operator+=(size_t num);
 
-    size_t getmaxCapacity() const { return maxCapacity_; }
     size_t getCapacity() const { return capacity_; }
     size_t getMaxCrew() const { return maxCrew_; }
     size_t getSpeed() const { return speed_; }
@@ -33,7 +32,6 @@ public:
 
 private:
     std::vector<Cargo> cargo_;
-    size_t maxCapacity_;
     size_t capacity_;
     size_t maxCrew_;
     size_t crew_;
