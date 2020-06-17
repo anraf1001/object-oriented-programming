@@ -4,7 +4,6 @@
 
 #include <memory>
 
-
 class Player {
 public:
     Player(Ship& ship, size_t money, size_t availableSpace)
