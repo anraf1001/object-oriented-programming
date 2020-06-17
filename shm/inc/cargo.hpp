@@ -4,9 +4,16 @@
 
 class Cargo {
 public:
+    Cargo(std::string name, size_t amount, size_t basePrice)
+        : name_(name), amount_(amount), basePrice_(basePrice) {}
+
     Cargo& operator+=(size_t amount);
 
     Cargo& operator-=(size_t amount);
+
+    std::string getName() const { return name_; }
+    size_t getAmount() const { return amount_; }
+    size_t getBasePrice() const { return basePrice_; }
 
 protected:
     std::string name_;
