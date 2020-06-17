@@ -1,8 +1,9 @@
 #pragma once
 
-#include "cargo.hpp"
 #include <string>
 #include <vector>
+
+#include "cargo.hpp"
 
 class Ship {
 public:
@@ -23,12 +24,7 @@ public:
     size_t getSpeed() const { return speed_; }
     std::string getName() const { return name_; }
     size_t getId() const { return id_; }
-    Cargo getCargo(size_t index) const{
-        if(index <  0){
-            std::cerr << "Invalid index\n";
-        }
-        return cargo_[index];
-    }
+    Cargo getCargo(size_t index) const;
 
 private:
     std::vector<Cargo> cargo_;
