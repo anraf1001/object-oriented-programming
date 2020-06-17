@@ -1,4 +1,4 @@
-#include "inc/coordinates.hpp"
+#include "coordinates.hpp"
 
 bool Coordinates::operator==(const Coordinates& coordToCheck) const {
 
