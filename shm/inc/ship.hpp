@@ -1,5 +1,4 @@
 #pragma once
-
 #include <string>
 #include <vector>
 
@@ -27,6 +26,8 @@ public:
     size_t getId() const { return id_; }
 
     Cargo getCargo(size_t index) const;
+
+    std::vector<Cargo>& getallCargo() { return cargo_; }
 
 private:
     std::vector<Cargo> cargo_;
