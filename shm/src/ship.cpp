@@ -1,7 +1,10 @@
 #include "ship.hpp"
 
 #include <iostream>
+<<<<<<< HEAD
 #include <numeric>
+=======
+>>>>>>> calculate availableSpace_ function done
 
 Ship& Ship::operator-=(size_t num) {
     crew_ -= num;
