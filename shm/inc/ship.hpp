@@ -26,7 +26,7 @@ public:
 
     Cargo getCargo(size_t index) const;
 
-    std::vector<Cargo>& getallCargo() { return cargo_; }
+    size_t getAvailableSpace() const;
 
 private:
     std::vector<Cargo> cargo_;
