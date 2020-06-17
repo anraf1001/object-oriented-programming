@@ -1,8 +1,8 @@
 #pragma once
 
-#include "ship.hpp"
-
 #include <memory>
+
+#include "ship.hpp"
 
 class Player {
 public:
@@ -14,6 +14,7 @@ public:
     size_t getavailableSpace() const { return availableSpace_; }
 
     size_t getSpeed() const { return ship_->getSpeed(); }
+
     Cargo getCargo(size_t index) const { return ship_->getCargo(index); }
 
 private:
