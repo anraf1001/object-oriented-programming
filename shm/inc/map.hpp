@@ -6,6 +6,6 @@
 
 class Map {
 private:
-    std::vector<Island> island_;
+    std::vector<Island> islands_;
     Island* currentPosition_;
 };
