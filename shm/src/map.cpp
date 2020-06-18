@@ -13,7 +13,7 @@ Map::Map() {
     generateIslands();
 }
 
-Island* Map::getIsland(const Coordinates& coordinate) {
+Island* Map::getIsland(const Coordinates& coordinates) {
 
     auto island = std::find_if(islands_.begin(), islands_.end(),
                            [&](const auto& island) {
