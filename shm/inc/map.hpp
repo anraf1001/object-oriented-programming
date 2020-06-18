@@ -6,10 +6,10 @@
 #include "island.hpp"
 
 class Map {
+public:
+    Island* getIsland(const Coordinates&);
+    
 private:
     std::vector<Island> islands_;
     Island* currentPosition_;
-
-public:
-    Island* getIsland(const Coordinates&);
 };
