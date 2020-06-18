@@ -17,7 +17,7 @@ Island* Map::getIsland(const Coordinates& coordinates) {
 
     auto island = std::find_if(islands_.begin(), islands_.end(),
                            [&](const auto& island) {
-                               return coordinate == island.getPosition();
+                               return coordinates == island.getPosition();
                            });
     return island != std::end(islands_) ? &*island : nullptr;
 }
