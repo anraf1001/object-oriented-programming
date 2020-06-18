@@ -3,8 +3,10 @@
 #include <algorithm>
 
 Island* Map::getIsland(const Coordinates& coordinate) {
-    return &*(std::find_if(islands_.begin(), islands_.end(),
-                           [&](const auto& el) {
-                               return coordinate == el.getPosition();
+
+    auto island = std::find_if(islands_.begin(), islands_.end(),
+                           [&](const auto& island) {
+                               return coordinate == island.getPosition();
                            }));
+    return island != std::end(islands_) ? &*island : nullptr;
 }
