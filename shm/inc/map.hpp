@@ -7,7 +7,7 @@
 
 class Map {
 public:
-    Island* getIsland(const Coordinates& coordinate);
+    Island* getIsland(const Coordinates& coordinates);
     
 private:
     std::vector<Island> islands_;
