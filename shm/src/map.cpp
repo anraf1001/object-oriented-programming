@@ -28,19 +28,19 @@ void Map::generateIslands() {
     islands_.reserve(kIslandAmt);
     /*************************1*****************************/
 
-    std::uniform_int_distribution<> width_gen(0, kMapWidth);
-    std::uniform_int_distribution<> height_gen(0, kMapHeight);
+    std::uniform_int_distribution<> widthGen(0, kMapWidth);
+    std::uniform_int_distribution<> heightGen(0, kMapHeight);
 
-    std::set<std::pair<int, int>> unique_islands;
+    std::set<std::pair<int, int>> uniqueIslands;
     int x = 0;
     int y = 0;
-    while (unique_islands.size() < kIslandAmt) {
-        x = width_gen(eng);
-        y = height_gen(eng);
+    while (uniqueIslands.size() < kIslandAmt) {
+        x = widthGen(eng);
+        y = heightGen(eng);
 
-        unique_islands.insert({x, y});
+        uniqueIslands.insert({x, y});
     }
-    std::transform(unique_islands.begin(), unique_islands.end(),
+    std::transform(uniqueIslands.begin(), uniqueIslands.end(),
                    std::back_inserter(islands_),
                    [](const auto& coords) {
                        return Island(coords.first, coords.second);
