@@ -6,11 +6,11 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
-    src/cargo.cpp
-    src/fruit.cpp
     src/alcohol.cpp
-    src/item.cpp
+    src/cargo.cpp
     src/coordinates.cpp
+    src/fruit.cpp
+    src/item.cpp
     src/island.cpp
     src/map.cpp
     src/player.cpp

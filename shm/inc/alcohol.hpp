@@ -3,7 +3,7 @@
 #include "cargo.hpp"
 
 namespace {
-constexpr size_t BASE_POWER = 96;
+constexpr auto BASE_POWER = 96.f;
 }
 
 class Alcohol : public Cargo {
@@ -21,5 +21,5 @@ public:
     size_t getBasePrice() const override { return basePrice_; }
 
 private:
-    const size_t power_;
+    const float power_;
 };
