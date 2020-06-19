@@ -3,7 +3,7 @@
 #include "cargo.hpp"
 
 namespace {
-constexpr auto BASE_POWER = 96.f;
+constexpr auto kBasePower = 96.f;
 }
 
 class Alcohol : public Cargo {
