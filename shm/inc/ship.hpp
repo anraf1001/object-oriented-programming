@@ -1,4 +1,5 @@
 #pragma once
+
 #include <string>
 #include <vector>
 
@@ -8,7 +9,6 @@ class Ship {
 public:
     Ship()
         : id_(-1) {}
-
     Ship(int capacity, int maxCrew, int speed, const std::string& name, unsigned int id)
         : capacity_(capacity), maxCrew_(maxCrew), crew_(0), speed_(speed), name_(name), id_(id) {}
     Ship(int maxCrew, int speed, unsigned int id)
@@ -16,16 +16,17 @@ public:
 
     void setName(const std::string& name) { name_ = name; }
 
-    Ship& operator-=(size_t num);
-    Ship& operator+=(size_t num);
-
     size_t getCapacity() const { return capacity_; }
     size_t getMaxCrew() const { return maxCrew_; }
     size_t getSpeed() const { return speed_; }
     std::string getName() const { return name_; }
     int getId() const { return id_; }
-    Cargo getCargo(size_t index) const;
+
+    Cargo* getCargo(size_t index);
     size_t getAvailableSpace() const;
+        
+    Ship& operator-=(size_t num);
+    Ship& operator+=(size_t num);
 
 private:
     std::vector<Cargo> cargo_;

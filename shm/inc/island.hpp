@@ -5,7 +5,7 @@
 class Island {
 public:
     Island(int positionX, int positionY)
-        : position_(Coordinates(positionX, positionY)) {}
+        : position_(positionX, positionY) {}
 
     Coordinates getPosition() const { return position_; }
 

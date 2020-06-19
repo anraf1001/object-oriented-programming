@@ -13,11 +13,11 @@ Ship& Ship::operator+=(size_t num) {
     return *this;
 }
 
-Cargo Ship::getCargo(size_t index) const {
-    if (index >= cargo_.size()) {
-        std::cerr << "Invalid index\n";
+Cargo* Ship::getCargo(size_t index) {
+    if (index < cargo_.size()) {
+        return &cargo_[index];
     }
-    return cargo_[index];
+    return nullptr;
 }
 
 size_t Ship::getAvailableSpace() const {
