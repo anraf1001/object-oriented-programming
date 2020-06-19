@@ -10,7 +10,8 @@ public:
 
     Fruit& operator--();
 
-    size_t getleftTime() const { return leftTime_; }
+    size_t getLeftTime() const { return leftTime_; }
+
     size_t getTimeToSpoil() const { return timeToSpoil_; }
 
     //override from Cargo
