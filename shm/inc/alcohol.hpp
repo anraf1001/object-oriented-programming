@@ -9,10 +9,10 @@ constexpr auto kBasePower = 96.f;
 class Alcohol : public Cargo {
 public:
     Alcohol(const std::string& name, size_t amount, size_t basePrice);
-    Alcohol(const std::string& name, size_t amount, size_t basePrice, size_t power);
+    Alcohol(const std::string& name, size_t amount, size_t basePrice, float power);
     ~Alcohol() override = default;
 
-    size_t getPower() const { return power_; }
+    float getPower() const { return power_; }
 
     //override from Cargo
     std::string getName() const override { return name_; }
