@@ -7,6 +7,9 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(SOURCES
     src/cargo.cpp
+    src/fruit.cpp
+    src/alcohol.cpp
+    src/item.cpp
     src/coordinates.cpp
     src/island.cpp
     src/map.cpp
