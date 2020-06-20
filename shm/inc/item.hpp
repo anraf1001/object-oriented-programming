@@ -1,13 +1,15 @@
 #pragma once
 
+#include <map>
+
 #include "cargo.hpp"
 
 class Item : public Cargo {
 public:
-    enum class Rarity { common = 1,
-                        rare = 2,
-                        epic = 4,
-                        legendary = 8 };
+    enum class Rarity { common,
+                        rare,
+                        epic,
+                        legendary };
 
     Item(const std::string& name, size_t amount, size_t basePrice, Rarity rarity);
 
@@ -23,4 +25,9 @@ public:
 
 private:
     Rarity rarity_;
+
+    const std::map<Rarity, size_t> priceMultipliers_{{Rarity::common, 1},
+                                                     {Rarity::rare, 2},
+                                                     {Rarity::epic, 4},
+                                                     {Rarity::legendary, 8}};
 };
