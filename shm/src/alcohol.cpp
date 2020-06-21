@@ -1,7 +1,8 @@
 #include "alcohol.hpp"
-#include "globaltime.hpp"
 
 #include <iostream>
+
+#include "globaltime.hpp"
 
 Alcohol::Alcohol(const std::string& name, size_t amount, size_t basePrice)
     : Alcohol(name, amount, basePrice, kBasePower) {
@@ -49,5 +50,4 @@ Cargo& Alcohol::operator-=(size_t amount) {
         std::cerr << "Amount equal zero\n";
     }
     return *this;
-
 }

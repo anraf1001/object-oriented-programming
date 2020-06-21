@@ -1,7 +1,8 @@
 #include "fruit.hpp"
-#include "globaltime.hpp"
 
 #include <iostream>
+
+#include "globaltime.hpp"
 
 Fruit::Fruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDate)
     : Fruit(name, amount, basePrice, expiryDate, expiryDate) {}

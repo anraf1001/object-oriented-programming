@@ -1,7 +1,8 @@
 #include "item.hpp"
-#include "globaltime.hpp"
 
 #include <iostream>
+
+#include "globaltime.hpp"
 
 Item::Item(const std::string& name, size_t amount, size_t basePrice, Rarity rarity)
     : Cargo(name, amount, basePrice), rarity_(rarity) {
