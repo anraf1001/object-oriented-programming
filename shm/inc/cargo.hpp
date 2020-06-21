@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 
 class Cargo {
@@ -11,8 +12,8 @@ public:
     virtual size_t getAmount() const = 0;
     virtual size_t getPrice() const = 0;
     virtual size_t getBasePrice() const = 0;
+    virtual bool operator==(const Cargo& cargoToCheck) const = 0;
 
-    bool operator==(const Cargo& cargoToCheck) const;
     Cargo& operator+=(size_t amount);
     Cargo& operator-=(size_t amount);
 

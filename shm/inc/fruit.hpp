@@ -19,6 +19,7 @@ public:
     size_t getAmount() const override { return amount_; }
     size_t getPrice() const override;
     size_t getBasePrice() const override { return basePrice_; }
+    bool operator==(const Cargo& cargoToCheck) const override;
 
 private:
     const size_t timeToSpoil_;
