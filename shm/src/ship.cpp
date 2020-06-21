@@ -13,7 +13,9 @@ Ship::Ship(int maxCrew, int speed, unsigned int id)
     : Ship(0, maxCrew, speed, "", id) {}
 
 Ship& Ship::operator-=(size_t num) {
-    if (crew_ > 0) {
+    if (num > crew_) {
+        crew_ = 0;
+    } else if (crew_ > 0) {
         crew_ -= num;
     } else {
         std::cerr << "There is no crew\n";

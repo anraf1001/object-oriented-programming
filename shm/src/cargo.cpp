@@ -11,7 +11,9 @@ Cargo& Cargo::operator+=(size_t amount) {
 }
 
 Cargo& Cargo::operator-=(size_t amount) {
-    if (amount_ > 0) {
+    if (amount > amount_) {
+        amount_ = 0;
+    } else if (amount_ > 0) {
         amount_ -= amount;
     } else {
         std::cerr << "Amount equal zero\n";
