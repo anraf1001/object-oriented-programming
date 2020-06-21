@@ -1,5 +1,7 @@
 #include "fruit.hpp"
 
+#include <iostream>
+
 Fruit::Fruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDate)
     : Fruit(name, amount, basePrice, expiryDate, expiryDate) {}
 
@@ -28,4 +30,20 @@ bool Fruit::operator==(const Cargo& cargoToCheck) const {
            basePrice_ == fruitToCheck->getBasePrice() &&
            leftTime_ == fruitToCheck->getLeftTime() &&
            timeToSpoil_ == fruitToCheck->getTimeToSpoil();
+}
+
+Cargo& Fruit::operator+=(size_t amount) {
+    amount_ += amount;
+    return *this;
+}
+
+Cargo& Fruit::operator-=(size_t amount) {
+    if (amount > amount_) {
+        amount_ = 0;
+    } else if (amount_ > 0) {
+        amount_ -= amount;
+    } else {
+        std::cerr << "Amount equal zero\n";
+    }
+    return *this;
 }

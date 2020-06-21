@@ -1,5 +1,7 @@
 #include "item.hpp"
 
+#include <iostream>
+
 Item::Item(const std::string& name, size_t amount, size_t basePrice, Rarity rarity)
     : Cargo(name, amount, basePrice), rarity_(rarity) {}
 
@@ -17,4 +19,20 @@ bool Item::operator==(const Cargo& cargoToCheck) const {
            amount_ == itemToCheck->getAmount() &&
            basePrice_ == itemToCheck->getBasePrice() &&
            rarity_ == itemToCheck->getRarity();
+}
+
+Cargo& Item::operator+=(size_t amount) {
+    amount_ += amount;
+    return *this;
+}
+
+Cargo& Item::operator-=(size_t amount) {
+    if (amount > amount_) {
+        amount_ = 0;
+    } else if (amount_ > 0) {
+        amount_ -= amount;
+    } else {
+        std::cerr << "Amount equal zero\n";
+    }
+    return *this;
 }

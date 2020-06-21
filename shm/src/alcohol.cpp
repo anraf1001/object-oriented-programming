@@ -1,5 +1,7 @@
 #include "alcohol.hpp"
 
+#include <iostream>
+
 Alcohol::Alcohol(const std::string& name, size_t amount, size_t basePrice)
     : Alcohol(name, amount, basePrice, kBasePower) {}
 
@@ -20,4 +22,20 @@ bool Alcohol::operator==(const Cargo& cargoToCheck) const {
            amount_ == alcoToCheck->getAmount() &&
            basePrice_ == alcoToCheck->getBasePrice() &&
            power_ == alcoToCheck->getPower();
+}
+
+Cargo& Alcohol::operator+=(size_t amount) {
+    amount_ += amount;
+    return *this;
+}
+
+Cargo& Alcohol::operator-=(size_t amount) {
+    if (amount > amount_) {
+        amount_ = 0;
+    } else if (amount_ > 0) {
+        amount_ -= amount;
+    } else {
+        std::cerr << "Amount equal zero\n";
+    }
+    return *this;
 }
