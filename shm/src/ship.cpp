@@ -46,7 +46,7 @@ size_t Ship::getAvailableSpace() const {
 
 void Ship::load(const std::shared_ptr<Cargo>& cargo) {
     if (cargo->getAmount() > getAvailableSpace()) {
-        std::cerr << "not enough space on the ship";
+        std::cerr << "not enough space on the ship\n";
         return;
     }
     auto cargoOnShip = std::find_if(cargo_.begin(), cargo_.end(),
@@ -66,11 +66,11 @@ void Ship::unload(const Cargo* const& cargo) {
                                         return el->getName() == name;
                                     });
     if (cargoOnShip == cargo_.end()) {
-        std::cerr << "Not found cargo";
+        std::cerr << "Not found cargo\n";
         return;
     }
     if ((*cargoOnShip)->getAmount() < cargo->getAmount()) {
-        std::cerr << "You don't have enough cargo";
+        std::cerr << "You don't have enough cargo\n";
         return;
     }
 
