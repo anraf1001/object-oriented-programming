@@ -22,6 +22,7 @@ public:
     size_t getAmount() const override { return amount_; }
     size_t getBasePrice() const override { return basePrice_; }
     size_t getPrice() const override;
+    void nextDay() override;
 
 protected:
     // override from Cloneable<Cargo>

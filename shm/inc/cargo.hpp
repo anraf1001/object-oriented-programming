@@ -14,7 +14,7 @@ public:
     virtual size_t getPrice() const = 0;
     virtual size_t getBasePrice() const = 0;
 
-    void nextDay();
+    virtual void nextDay() = 0;
 
     bool operator==(const Cargo& cargoToCheck) const;
     Cargo& operator+=(size_t amount);

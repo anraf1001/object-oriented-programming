@@ -26,7 +26,3 @@ bool Cargo::operator==(const Cargo& cargoToCheck) const {
            amount_ == cargoToCheck.amount_ &&
            basePrice_ == cargoToCheck.basePrice_;
 }
-
-void Cargo::nextDay(){
-    
-}
