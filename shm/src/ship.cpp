@@ -50,6 +50,10 @@ size_t Ship::getAvailableSpace() const {
     return capacity_ - reservedSpace;
 }
 
+void Ship::nextDay(){
+    
+}
+
 void Ship::load(const std::shared_ptr<Cargo>& cargo) {
     if (cargo->getAmount() > getAvailableSpace()) {
         std::cerr << "not enough space on the ship\n";
