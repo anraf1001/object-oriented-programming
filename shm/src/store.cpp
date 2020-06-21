@@ -45,5 +45,5 @@ void Store::receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) 
 }
 
 void Store::clearEmptyCargos() {
-    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [](auto& cargo) { return cargo->getAmount() == 0; }));
+    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [](auto& cargo) { return cargo->getAmount() == 0; }), cargo_.end());
 }
