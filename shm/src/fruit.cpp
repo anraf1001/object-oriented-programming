@@ -22,7 +22,7 @@ bool Fruit::operator==(const Cargo& cargoToCheck) const {
         return false;
     }
 
-    auto fruitToCheck = dynamic_cast<const Fruit*>(&cargoToCheck);
+    auto fruitToCheck = static_cast<const Fruit*>(&cargoToCheck);
     return name_ == fruitToCheck->getName() &&
            amount_ == fruitToCheck->getAmount() &&
            basePrice_ == fruitToCheck->getBasePrice() &&

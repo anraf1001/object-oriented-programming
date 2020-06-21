@@ -15,7 +15,7 @@ bool Alcohol::operator==(const Cargo& cargoToCheck) const {
         return false;
     }
 
-    auto alcoToCheck = dynamic_cast<const Alcohol*>(&cargoToCheck);
+    auto alcoToCheck = static_cast<const Alcohol*>(&cargoToCheck);
     return name_ == alcoToCheck->getName() &&
            amount_ == alcoToCheck->getAmount() &&
            basePrice_ == alcoToCheck->getBasePrice() &&

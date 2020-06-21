@@ -12,7 +12,7 @@ bool Item::operator==(const Cargo& cargoToCheck) const {
         return false;
     }
 
-    auto itemToCheck = dynamic_cast<const Item*>(&cargoToCheck);
+    auto itemToCheck = static_cast<const Item*>(&cargoToCheck);
     return name_ == itemToCheck->getName() &&
            amount_ == itemToCheck->getAmount() &&
            basePrice_ == itemToCheck->getBasePrice() &&
