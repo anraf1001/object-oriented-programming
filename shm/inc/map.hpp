@@ -10,6 +10,7 @@ public:
     Island* getIsland(const Coordinates& coordinates);
 
 private:
+    void generateIslands();
     std::vector<Island> islands_;
     Island* currentPosition_;
 };
