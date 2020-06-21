@@ -4,6 +4,7 @@
 
 class Island {
 public:
+    Island();
     Island(int positionX, int positionY);
 
     Coordinates getPosition() const { return position_; }
