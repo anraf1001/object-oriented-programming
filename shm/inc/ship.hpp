@@ -27,6 +27,9 @@ public:
     Ship& operator-=(size_t num);
     Ship& operator+=(size_t num);
 
+    void load(const std::shared_ptr<Cargo>& cargo);
+    void unload(const Cargo* const& cargo);
+
 private:
     std::vector<std::shared_ptr<Cargo>> cargo_;
     size_t capacity_;
