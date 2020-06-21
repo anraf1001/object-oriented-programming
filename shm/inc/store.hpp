@@ -24,7 +24,7 @@ public:
     Response sell(Cargo* cargo, size_t amount, Player* player);
 
     /* override from CargoHolder */
-    void Store::receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
+    void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
     void clearEmptyCargos() override;
 
 private:

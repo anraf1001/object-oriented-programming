@@ -1,5 +1,6 @@
 #include "store.hpp"
 
+#include <algorithm>
 #include <numeric>
 
 Response Store::buy(Cargo* cargo, size_t amount, Player* player) {
@@ -12,6 +13,7 @@ Response Store::buy(Cargo* cargo, size_t amount, Player* player) {
     receiveCargo(cargo, amount, player);
     return Response::done;
 }
+
 Response Store::sell(Cargo* cargo, size_t amount, Player* player) {
     if (player->getavailableSpace() < amount) {
         return Response::lack_of_space;
@@ -22,7 +24,7 @@ Response Store::sell(Cargo* cargo, size_t amount, Player* player) {
         return Response::lack_of_money;
     }
 
-    auto cargoIt = std::find_if(cargo_.begin(), cargo_.end(), [](auto& cargoPtr) { return cargoPtr.get() == cargo });
+    auto cargoIt = std::find_if(cargo_.begin(), cargo_.end(), [cargo](auto& cargoPtr) { return cargoPtr.get() == cargo; });
     if (cargoIt == cargo_.end() or (*cargoIt)->getAmount() < amount) {
         return Response::lack_of_cargo;
     }
