@@ -9,3 +9,7 @@ Alcohol::Alcohol(const std::string& name, size_t amount, size_t basePrice, float
 size_t Alcohol::getPrice() const {
     return static_cast<size_t>(static_cast<float>(basePrice_) * (power_ / kBasePower));
 }
+
+void Alcohol::nextDay(){
+    return;
+}
