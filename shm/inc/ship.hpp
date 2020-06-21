@@ -5,14 +5,15 @@
 
 #include "cargo.hpp"
 #include "cargoHolder.hpp"
+#include "delegate.hpp"
 
 class Ship : public CargoHolder {
 public:
     Ship();
 
-    Ship(int capacity, int maxCrew, int speed, const std::string& name, unsigned int id);
+    Ship(int capacity, int maxCrew, int speed, const std::string& name, unsigned int id, Delegate* delegate);
 
-    Ship(int maxCrew, int speed, unsigned int id);
+    Ship(int maxCrew, int speed, unsigned int id, Delegate* delegate);
 
     void setName(const std::string& name) { name_ = name; }
 
@@ -45,4 +46,5 @@ private:
     size_t speed_;
     std::string name_;
     const int id_;
+    Delegate* payCrew;
 };
