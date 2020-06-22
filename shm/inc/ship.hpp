@@ -4,8 +4,9 @@
 #include <vector>
 
 #include "cargo.hpp"
+#include "cargoHolder.hpp"
 
-class Ship {
+class Ship : public CargoHolder {
 public:
     Ship();
 
@@ -23,12 +24,17 @@ public:
 
     std::shared_ptr<Cargo> getCargo(size_t index);
     size_t getAvailableSpace() const;
+    void clearEmptyCargo();
 
     Ship& operator-=(size_t num);
     Ship& operator+=(size_t num);
 
     void load(const std::shared_ptr<Cargo>& cargo);
     void unload(const Cargo* const& cargo);
+
+    /* override from CargoHolder */
+    void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
+    void clearEmptyCargos() override;
 
 private:
     std::vector<std::shared_ptr<Cargo>> cargo_;

@@ -14,8 +14,12 @@ Ship::Ship(int maxCrew, int speed, unsigned int id)
     : Ship(0, maxCrew, speed, "", id) {}
 
 Ship& Ship::operator-=(size_t num) {
-    if (crew_ > 0) {
+    if (num > crew_) {
+        crew_ = 0;
+    } else if (crew_ > 0) {
         crew_ -= num;
+    } else {
+        std::cerr << "There is no crew\n";
     }
     return *this;
 }
@@ -23,6 +27,8 @@ Ship& Ship::operator-=(size_t num) {
 Ship& Ship::operator+=(size_t num) {
     if (crew_ < maxCrew_) {
         crew_ += num;
+    } else {
+        std::cerr << "You can't have more crew\n";
     }
     return *this;
 }
@@ -81,4 +87,17 @@ void Ship::unload(const Cargo* const& cargo) {
         cargo_.erase(cargo_.end() - 1, cargo_.end());
         cargo_.shrink_to_fit();
     }
+
+void Ship::receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) {
+    auto clonedCargo = cargo->cloneToShared();
+    (*clonedCargo) -= (clonedCargo->getAmount() - amount);
+    (*cargo) -= amount;
+    if (cargo->getAmount() == 0) {
+        cargoHolder->clearEmptyCargos();
+    }
+    cargo_.push_back(clonedCargo);
+}
+
+void Ship::clearEmptyCargos() {
+    cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [](auto& cargo) { return cargo->getAmount() == 0; }), cargo_.end());
 }
