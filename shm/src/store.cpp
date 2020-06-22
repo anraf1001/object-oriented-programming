@@ -54,18 +54,20 @@ void Store::nextDay() {
     constexpr size_t minQuantityOfProducts = 40;
     constexpr size_t maxQuantityOfProducts = 100;
 
-    size_t option = std::bind(std::uniform_int_distribution<>(0, 1),
-                              std::default_random_engine());
-    size_t productsQuantity = std::bind(std::uniform_int_distribution<>(minQuantityOfProducts,
-                                                                        maxQuantityOfProducts),
-                                        std::default_random_engine());
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> optionDistrib(removeItems, addItems);
+    std::uniform_int_distribution<> quantityDistrib(minQuantityOfProducts, maxQuantityOfProducts);
+
+    size_t option = optionDistrib(gen);
+
     if (option == addItems) {
         for (auto& item : cargo_) {
-            item += productsQuantity;
+            *item += quantityDistrib(gen);
         }
     } else if (option == removeItems) {
-        for (auto& item : cargo) {
-            item -= productsQuantity;
+        for (auto& item : cargo_) {
+            *item -= quantityDistrib(gen);
         }
     }
 }
