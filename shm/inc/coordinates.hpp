@@ -9,7 +9,7 @@ public:
 
     bool operator==(const Coordinates& coordToCheck) const;
 
-    static size_t dinstance(const Coordinates& lhs, const Coordinates& rhs);
+    static size_t distance(const Coordinates& lhs, const Coordinates& rhs);
 
 private:
     int positionX_;

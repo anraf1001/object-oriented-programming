@@ -7,7 +7,7 @@ bool Coordinates::operator==(const Coordinates& coordToCheck) const {
            positionY_ == coordToCheck.positionY_;
 }
 
-size_t Coordinates::dinstance(const Coordinates& lhs, const Coordinates& rhs) {
+size_t Coordinates::distance(const Coordinates& lhs, const Coordinates& rhs) {
     return static_cast<size_t>(
         std::floor(std::sqrt(
             std::pow(lhs.positionX_ - rhs.positionX_, 2) +
