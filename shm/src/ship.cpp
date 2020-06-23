@@ -107,3 +107,7 @@ void Ship::receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) {
 void Ship::clearEmptyCargos() {
     cargo_.erase(std::remove_if(cargo_.begin(), cargo_.end(), [](auto& cargo) { return cargo->getAmount() == 0; }), cargo_.end());
 }
+
+Ship::~Ship(){
+    time_->removeObserver(this);
+}
