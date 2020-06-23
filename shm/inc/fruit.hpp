@@ -6,7 +6,7 @@ class Fruit : public Cargo {
 public:
     Fruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDate);
     Fruit(const std::string& name, size_t amount, size_t basePrice, size_t expiryDate, size_t leftTime);
-    ~Fruit() override = default;
+    ~Fruit() override;
 
     virtual Fruit& operator--();
 
@@ -19,6 +19,8 @@ public:
     size_t getAmount() const override { return amount_; }
     size_t getPrice() const override;
     size_t getBasePrice() const override { return basePrice_; }
+
+    //override from Observer
     void nextDay() override;
 
 protected:
