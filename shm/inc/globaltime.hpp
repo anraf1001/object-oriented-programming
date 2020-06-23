@@ -12,4 +12,4 @@ class GlobalTime{
 
     private:
     static Time* globalTime_;
-}
+};

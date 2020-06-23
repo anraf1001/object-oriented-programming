@@ -14,5 +14,5 @@ size_t DryFruit::getPrice() const {
 }
 
 void DryFruit::nextDay(){
-    DryFruit::operator--();
+    this->operator--();
 }
