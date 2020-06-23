@@ -19,6 +19,8 @@ class DryFruit : public Fruit {
     //override from Observer
     void nextDay() override;
 
+    ~DryFruit() override;
+
 private:
     size_t spoilDelay_ = kSpoilDelay;
 };

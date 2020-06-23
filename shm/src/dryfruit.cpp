@@ -16,3 +16,7 @@ size_t DryFruit::getPrice() const {
 void DryFruit::nextDay(){
     this->operator--();
 }
+
+DryFruit::~DryFruit(){
+    GlobalTime::getGlobalTime()->removeObserver(this);
+}
