@@ -8,7 +8,9 @@ Ship::Ship()
     : id_(-1) {}
 
 Ship::Ship(int capacity, int maxCrew, int speed, const std::string& name, unsigned int id, Delegate* delegate, Time* time)
-    : capacity_(capacity), maxCrew_(maxCrew), crew_(0), speed_(speed), name_(name), id_(id), payCrew(delegate), time_(time) {}
+    : capacity_(capacity), maxCrew_(maxCrew), crew_(0), speed_(speed), name_(name), id_(id), payCrew(delegate), time_(time) {
+        time_->addObserver(this);
+    }
 
 Ship::Ship(int maxCrew, int speed, unsigned int id, Delegate* delegate, Time* time)
     : Ship(0, maxCrew, speed, "", id, delegate, time) {}

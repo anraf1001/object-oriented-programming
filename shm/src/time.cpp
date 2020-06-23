@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-constexpr size_t startTime = 0;
+constexpr size_t startTime = 1;
 
 Time::Time()
     : timeElapsed_(startTime) {
@@ -22,7 +22,7 @@ size_t Time::getElapsedTime() const {
 
 Time& Time::operator++() {
     timeElapsed_++;
-    for(auto observer : observers_){
+    for(const auto observer : observers_){
         observer->nextDay();
     }
     return *this;
