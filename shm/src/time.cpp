@@ -2,10 +2,10 @@
 
 #include <algorithm>
 
-constexpr size_t time = 0;
+constexpr size_t startTime = 0;
 
 Time::Time()
-    : timeElapsed_(time) {
+    : timeElapsed_(startTime) {
 }
 
 void Time::addObserver(Observer* obs) {
@@ -13,7 +13,7 @@ void Time::addObserver(Observer* obs) {
 }
 
 void Time::removeObserver(Observer* obs) {
-    observers_.erase(std::remove(observers_.begin(), observers_.end(), obs), vec.end());
+    observers_.erase(std::remove(observers_.begin(), observers_.end(), obs), observers_.end());
 }
 
 size_t Time::getElapsedTime() const {

@@ -16,7 +16,8 @@ set(SOURCES
     src/map.cpp
     src/player.cpp
     src/ship.cpp
-    src/store.cpp)
+    src/store.cpp
+    src/time.cpp)
 
 add_executable(${PROJECT_NAME} main.cpp ${SOURCES})
 
