@@ -3,11 +3,12 @@
 #include <algorithm>
 #include <random>
 
-Store::Store(Time* time) : time_(time){
+Store::Store(Time* time)
+    : time_(time) {
     time_->addObserver(this);
 }
 
-Store::~Store(){
+Store::~Store() {
     time_->removeObserver(this);
 }
 

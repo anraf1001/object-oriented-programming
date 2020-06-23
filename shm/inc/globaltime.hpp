@@ -2,14 +2,14 @@
 
 #include "time.hpp"
 
-class GlobalTime{
-    public:
+class GlobalTime {
+public:
     static Time* getGlobalTime() { return globalTime_; }
 
-    static void provideGlobalTime(Time* time){
+    static void provideGlobalTime(Time* time) {
         globalTime_ = time;
     }
 
-    private:
+private:
     static Time* globalTime_;
 };

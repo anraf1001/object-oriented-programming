@@ -1,4 +1,5 @@
 #include "dryfruit.hpp"
+
 #include "globaltime.hpp"
 Fruit& DryFruit::operator--() {
     spoilDelay_--;
@@ -13,10 +14,10 @@ size_t DryFruit::getPrice() const {
     return Fruit::getPrice() * kDrynessPriceMultiplier;
 }
 
-void DryFruit::nextDay(){
+void DryFruit::nextDay() {
     this->operator--();
 }
 
-DryFruit::~DryFruit(){
+DryFruit::~DryFruit() {
     GlobalTime::getGlobalTime()->removeObserver(this);
 }
