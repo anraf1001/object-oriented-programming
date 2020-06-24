@@ -29,7 +29,6 @@ public:
     Cargo& operator+=(size_t amount) override;
     Cargo& operator-=(size_t amount) override;
 
-
 protected:
     // override from Cloneable<Cargo>
     Cargo* cloneToRawPointer() override { return new Item(*this); }
