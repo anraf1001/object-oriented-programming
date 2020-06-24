@@ -12,7 +12,6 @@ size_t Alcohol::getPrice() const {
     return static_cast<size_t>(static_cast<float>(basePrice_) * (power_ / kBasePower));
 }
 
-
 void Alcohol::nextDay(){
     return;
 }
