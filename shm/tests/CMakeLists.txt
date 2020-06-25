@@ -1,11 +1,11 @@
 
 enable_testing()
 
+include_directories(mocks)
+
 set(TEST_SOURCES
   coordinatesTest.cpp
 )
-
-include_directories(mocks)
 
 add_executable(${PROJECT_NAME}_ut main.cpp ${TEST_SOURCES})
 
