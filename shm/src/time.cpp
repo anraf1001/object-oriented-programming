@@ -22,7 +22,7 @@ size_t Time::getElapsedTime() const {
 
 Time& Time::operator++() {
     timeElapsed_++;
-    for (const auto observer : observers_) {
+    for (const auto& observer : observers_) {
         observer->nextDay();
     }
     return *this;
