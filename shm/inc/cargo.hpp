@@ -4,8 +4,10 @@
 #include <string>
 
 #include "cloneable.hpp"
+#include "observer.hpp"
 
-class Cargo : public Cloneable<Cargo> {
+class Cargo : public Cloneable<Cargo>,
+              public Observer {
 public:
     Cargo(const std::string& name, size_t amount, size_t basePrice);
     virtual ~Cargo() = default;
@@ -14,6 +16,8 @@ public:
     virtual size_t getAmount() const = 0;
     virtual size_t getPrice() const = 0;
     virtual size_t getBasePrice() const = 0;
+
+    virtual void nextDay() = 0;
 
     virtual bool operator==(const Cargo& cargoToCheck) const = 0;
     virtual Cargo& operator+=(size_t amount) = 0;
