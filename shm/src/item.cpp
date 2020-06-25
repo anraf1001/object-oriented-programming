@@ -12,7 +12,6 @@ size_t Item::getPrice() const {
     return basePrice_ * priceMultipliers_.at(rarity_);
 }
 
-
 void Item::nextDay() {
     return;
 }

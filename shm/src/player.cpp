@@ -12,6 +12,7 @@ void Player::changeMoney(size_t amount) {
     }
     money_ += amount;
 }
+
 void Player::payCrew(size_t money) {
     if (money > money_) {
         std::cerr << "You don't have enough money to pay!!!\n";

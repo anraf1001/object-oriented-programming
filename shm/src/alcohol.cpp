@@ -15,7 +15,6 @@ size_t Alcohol::getPrice() const {
     return static_cast<size_t>(static_cast<float>(basePrice_) * (power_ / kBasePower));
 }
 
-
 void Alcohol::nextDay() {
     return;
 }
@@ -50,4 +49,5 @@ Cargo& Alcohol::operator-=(size_t amount) {
         std::cerr << "Amount equal zero\n";
     }
     return *this;
+
 }
