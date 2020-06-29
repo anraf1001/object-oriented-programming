@@ -116,7 +116,7 @@ void Game::printCargo() {
     const auto cargo = player_->getShip()->getAllCargo();
     std::for_each(cargo.begin(), cargo.end(),
                   [int counter{1}](const Cargo& item) {
-                     std::cout << counter++ << ") " << item.getName() << "\t"
-                        << "Amount: " item.getAmount()
+                      std::cout << counter++ << ") " << item.getName() << "\t"
+                                << "Amount: " item.getAmount()
                   });
 }
