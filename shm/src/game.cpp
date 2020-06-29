@@ -31,8 +31,14 @@ void Game::printOptions() {
               << "Choice option: ";
 }
 
-void Game::printWinScreen(){
+void Game::printWinScreen() {
     system("cls");
     std::cout << "CONGRATULATION!!! YOU WIN, You earn: " << player_->getMoney()
-        << " money in: " << time_->getElapsedTime() << " days";
+              << " money in: " << time_->getElapsedTime() << " days";
+}
+
+void Game::printLooseScreen() {
+    system("cls");
+    std::cout << "GAME OVER! You earn: " << player_->getMoney()
+              << " money in: " << time_->getElapsedTime() << " days";
 }
