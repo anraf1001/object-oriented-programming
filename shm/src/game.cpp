@@ -5,8 +5,36 @@
 #include "island.hpp"
 #include "store.hpp"
 
+const std::string line(80,'=');
+
 Game::Game(size_t money, size_t days, size_t finalGoal)
     : money_(money), days_(days), finalGoal_(finalGoal) {
+}
+
+void Game::startGame(){
+    std::cout << "Welcome in SHM, you have: " << days_
+        << " days, to gain: " << money_ << " HAVE FUN!\n\n";
+    
+    while(days_ > time_->getElapsedTime()){
+        if(checkWinCondition()){
+            printWinScreen();
+            return;
+        }else if(checkLooseCondition()){
+            break;
+        }
+        std::cout << line << "\n";
+        printMenu();
+        printOptions();
+        size_t option;
+        std::cin.clear();
+        std::cin >> option
+        if(option == 0){
+            break;
+        }
+        makeAction(statis_cast<Action>(option));
+        system("cls");
+    }
+    printLooseScreen();
 }
 
 bool Game::checkWinCondition() const {
