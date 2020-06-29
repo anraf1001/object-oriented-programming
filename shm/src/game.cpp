@@ -21,3 +21,8 @@ void Game::printMenu(){
         << " Position: "
         << map_->getIsland->getPosition() << "\n";
 }
+
+void Game::printOptions(){
+    std::cout << "\n" << "1) Travel\n" << "2) Sell\n" << "3) Buy\n"
+        << "4) Check cargo\n" << "5) Exit\n\n" << "Choice option: ";
+}
