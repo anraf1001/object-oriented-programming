@@ -13,3 +13,7 @@ size_t Coordinates::distance(const Coordinates& lhs, const Coordinates& rhs) {
             std::pow(lhs.positionX_ - rhs.positionX_, 2) +
             std::pow(lhs.positionY_ - rhs.positionY_, 2))));
 }
+
+std::ostream& operator<<(std::ostream& out, const Coordinates& cord){
+    return out << "[ x: " << cord.positionX_ <<  " | y: " << cord.positionY_ << " ]";
+}
