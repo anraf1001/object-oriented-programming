@@ -14,6 +14,7 @@ set(SOURCES
     ship.cpp
     store.cpp
     time.cpp
+    game.cpp
     )
 
 add_library(${PROJECT_NAME}_lib STATIC ${SOURCES})

@@ -8,6 +8,7 @@ class Map {
 public:
     Map();
     Island* getIsland(const Coordinates& coordinates);
+    Island* getCurrentPosition() const { return currentPosition_; }
 
 private:
     void generateIslands();

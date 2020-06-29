@@ -11,15 +11,17 @@ const std::string line(80, '=');
 
 Game::Game(size_t money, size_t days, size_t finalGoal)
     : money_(money), days_(days), finalGoal_(finalGoal) {
+    Delegate* delegate;
     time_ = new Time();
+    GlobalTime::provideGlobalTime(time_);
     map_ = new Map();
     Ship ship(200, 50, 3, "Black Pearl", 1, delegate, time_);
-    player_ = new Player(std::make_unique<Ship>(ship), money, ship.getAvailableSpace());
-    Delegate* delegate = player_;
+    player_ = new Player(ship, money, 200ul);
+    delegate = player_;
     ship.setDelegate(delegate);
 }
 
-Game::~Game(){
+Game::~Game() {
     delete time_;
     delete map_;
     delete player_;
@@ -41,10 +43,11 @@ void Game::startGame() {
         printOptions();
         size_t option;
         std::cin.clear();
-        std::cin >> option if (option == 0) {
+        std::cin >> option;
+        if (option == 0) {
             break;
         }
-        makeAction(statis_cast<Action>(option));
+        makeAction(static_cast<Action>(option));
         system("cls");
     }
     printLooseScreen();
@@ -63,7 +66,7 @@ void Game::printMenu() {
               << " Day: " << time_->getElapsedTime()
               << " Days to end: " << days_ - time_->getElapsedTime()
               << " Position: "
-              << map_->getIsland->getPosition() << "\n";
+              << map_->getCurrentPosition() << "\n";
 }
 
 void Game::printOptions() {
@@ -122,8 +125,8 @@ void Game::sell() {
 void Game::printCargo() {
     const auto cargo = player_->getShip()->getAllCargo();
     std::for_each(cargo.begin(), cargo.end(),
-                  [int counter{1}](const Cargo& item) {
-                      std::cout << counter++ << ") " << item.getName() << "\t"
-                                << "Amount: " item.getAmount() << "\n";
+                  [counter{1}](const std::shared_ptr<Cargo> item) mutable {
+                      std::cout << counter++ << ") " << item->getName() << "\t"
+                                << "Amount: " << item->getAmount() << "\n";
                   });
 }
