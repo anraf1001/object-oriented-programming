@@ -16,6 +16,7 @@ public:
 
     Game(size_t money, size_t days, size_t finalGoal);
     void startGame();
+    ~Game();
 
 private:
     bool checkWinCondition() const;

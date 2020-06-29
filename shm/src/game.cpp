@@ -11,11 +11,18 @@ const std::string line(80, '=');
 
 Game::Game(size_t money, size_t days, size_t finalGoal)
     : money_(money), days_(days), finalGoal_(finalGoal) {
-    Delegate* delegate = new Delegate();
     time_ = new Time();
     map_ = new Map();
     Ship ship(200, 50, 3, "Black Pearl", 1, delegate, time_);
     player_ = new Player(std::make_unique<Ship>(ship), money, ship.getAvailableSpace());
+    Delegate* delegate = player_;
+    ship.setDelegate(delegate);
+}
+
+Game::~Game(){
+    delete time_;
+    delete map_;
+    delete player_;
 }
 
 void Game::startGame() {
