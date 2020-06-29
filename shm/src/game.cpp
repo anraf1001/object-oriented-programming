@@ -5,6 +5,10 @@
 #include "island.hpp"
 #include "store.hpp"
 
+Game::Game(size_t money, size_t days, size_t finalGoal)
+    : money_(money), days_(days), finalGoal_(finalGoal) {
+}
+
 bool Game::checkWinCondition() const {
     return player_->getMoney() >= finalGoal_;
 }
@@ -43,9 +47,8 @@ void Game::printLooseScreen() {
               << " money in: " << time_->getElapsedTime() << " days";
 }
 
-void Game::makeAction(Action action){
-    switch (action)
-    {
+void Game::makeAction(Action action) {
+    switch (action) {
     case Action::Travel:
         travel();
         break;
@@ -62,4 +65,3 @@ void Game::makeAction(Action action){
         break;
     }
 }
-
