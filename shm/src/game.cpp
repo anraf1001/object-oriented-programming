@@ -48,7 +48,7 @@ void Game::startGame() {
             break;
         }
         makeAction(static_cast<Action>(option));
-        system("cls");
+        system("clear");
     }
     printLooseScreen();
 }
@@ -80,13 +80,13 @@ void Game::printOptions() {
 }
 
 void Game::printWinScreen() {
-    system("cls");
+    system("clear");
     std::cout << "CONGRATULATION!!! YOU WIN, You earn: " << player_->getMoney()
               << " money in: " << time_->getElapsedTime() << " days";
 }
 
 void Game::printLooseScreen() {
-    system("cls");
+    system("clear");
     std::cout << "GAME OVER! You earn: " << player_->getMoney()
               << " money in: " << time_->getElapsedTime() << " days";
 }
