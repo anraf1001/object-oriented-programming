@@ -1,31 +1,32 @@
 #include "game.hpp"
 
+#include <algorithm>
+
 #include "cargo.hpp"
 #include "globaltime.hpp"
 #include "island.hpp"
 #include "store.hpp"
 
-const std::string line(80,'=');
+const std::string line(80, '=');
 
 Game::Game(size_t money, size_t days, size_t finalGoal)
     : money_(money), days_(days), finalGoal_(finalGoal) {
-    
     Delegate* delegate = new Delegate();
     time_ = new Time();
     map_ = new Map();
-    Ship ship(200, 50, 10, "Black Pearl", 1, delegate, time_);
+    Ship ship(200, 50, 3, "Black Pearl", 1, delegate, time_);
     player_ = new Player(std::make_unique<Ship>(ship), money, ship.getAvailableSpace());
 }
 
-void Game::startGame(){
+void Game::startGame() {
     std::cout << "Welcome in SHM, you have: " << days_
-        << " days, to gain: " << money_ << " HAVE FUN!\n\n";
-    
-    while(days_ > time_->getElapsedTime()){
-        if(checkWinCondition()){
+              << " days, to gain: " << money_ << " HAVE FUN!\n\n";
+
+    while (days_ > time_->getElapsedTime()) {
+        if (checkWinCondition()) {
             printWinScreen();
             return;
-        }else if(checkLooseCondition()){
+        } else if (checkLooseCondition()) {
             break;
         }
         std::cout << line << "\n";
@@ -33,8 +34,7 @@ void Game::startGame(){
         printOptions();
         size_t option;
         std::cin.clear();
-        std::cin >> option
-        if(option == 0){
+        std::cin >> option if (option == 0) {
             break;
         }
         makeAction(statis_cast<Action>(option));
@@ -98,4 +98,25 @@ void Game::makeAction(Action action) {
         std::cout << "Wrong action!\n";
         break;
     }
+}
+
+void Game::travel() {
+    /*TODO*/
+}
+
+void Game::buy() {
+    /*TODO*/
+}
+
+void Game::sell() {
+    /*TODO*/
+}
+
+void Game::printCargo() {
+    const auto cargo = player_->getShip()->getAllCargo();
+    std::for_each(cargo.begin(), cargo.end(),
+                  [int counter{1}](const Cargo& item) {
+                     std::cout << counter++ << ") " << item.getName() << "\t"
+                        << "Amount: " item.getAmount()
+                  });
 }

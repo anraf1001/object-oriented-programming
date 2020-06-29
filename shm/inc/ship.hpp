@@ -22,6 +22,7 @@ public:
     size_t getCapacity() const { return capacity_; }
     size_t getMaxCrew() const { return maxCrew_; }
     size_t getSpeed() const { return speed_; }
+    std::vector<std::shared_ptr<Cargo>>& getAllCargo() { return cargo_; }
     std::string getName() const { return name_; }
     int getId() const { return id_; }
     void setDelegate(Delegate* delegate) { payCrew = delegate; }
