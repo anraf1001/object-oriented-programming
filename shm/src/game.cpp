@@ -117,6 +117,6 @@ void Game::printCargo() {
     std::for_each(cargo.begin(), cargo.end(),
                   [int counter{1}](const Cargo& item) {
                       std::cout << counter++ << ") " << item.getName() << "\t"
-                                << "Amount: " item.getAmount()
+                                << "Amount: " item.getAmount() << "\n";
                   });
 }
