@@ -42,3 +42,24 @@ void Game::printLooseScreen() {
     std::cout << "GAME OVER! You earn: " << player_->getMoney()
               << " money in: " << time_->getElapsedTime() << " days";
 }
+
+void Game::makeAction(Action action){
+    switch (action)
+    {
+    case Action::Travel:
+        travel();
+        break;
+    case Action::Sell:
+        sell();
+        break;
+    case Action::Buy:
+        buy();
+        break;
+    case Action::checkCargo:
+        printCargo();
+    default:
+        std::cout << "Wrong action!\n";
+        break;
+    }
+}
+

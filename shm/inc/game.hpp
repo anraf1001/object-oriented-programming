@@ -10,7 +10,8 @@ public:
     enum class Action {
         Travel = 1,
         Sell = 2,
-        Buy = 3
+        Buy = 3,
+        checkCargo = 4
     };
 
     Game(size_t money, size_t days, size_t finalGoal);
