@@ -5,6 +5,7 @@ set(SOURCES
     coordinates.cpp
     dryfruit.cpp
     fruit.cpp
+    game.cpp
     globaltime.cpp
     island.cpp
     item.cpp
