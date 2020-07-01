@@ -16,7 +16,6 @@ public:
 
     Game(size_t money, size_t days, size_t finalGoal);
     void startGame();
-    ~Game();
 
 private:
     bool checkWinCondition() const;
@@ -35,7 +34,8 @@ private:
     size_t days_;
     size_t finalGoal_;
     size_t currentDay_;
-    Map* map_;
-    Time* time_;
-    Player* player_;
+
+    std::unique_ptr<Map> map_;
+    std::shared_ptr<Time> time_;
+    std::shared_ptr<Player> player_;
 };

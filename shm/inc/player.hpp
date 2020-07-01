@@ -10,7 +10,7 @@ class Player : public CargoHolder,
 public:
     Player(Ship& ship, size_t money, size_t availableSpace);
 
-    std::unique_ptr<Ship> getShip() { return std::move(ship_); }
+    std::shared_ptr<Ship> getShip() { return ship_; }
     size_t getMoney() const { return money_; }
     size_t getavailableSpace() const { return availableSpace_; }
     size_t getSpeed() const { return ship_->getSpeed(); }
@@ -30,7 +30,7 @@ public:
 private:
     size_t getAvailableSpace() { return ship_->getAvailableSpace(); }
 
-    std::unique_ptr<Ship> ship_;
+    std::shared_ptr<Ship> ship_;
     size_t money_;
     size_t availableSpace_;
 };

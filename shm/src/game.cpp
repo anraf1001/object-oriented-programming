@@ -11,23 +11,18 @@ const std::string line(80, '=');
 
 Game::Game(size_t money, size_t days, size_t finalGoal)
     : money_(money), days_(days), finalGoal_(finalGoal) {
-    Delegate* delegate;
-    time_ = new Time();
-    GlobalTime::provideGlobalTime(time_);
-    map_ = new Map();
-    Ship ship(200, 50, 3, "Black Pearl", 1, delegate, time_);
-    player_ = new Player(ship, money, 200ul);
+    std::shared_ptr<Delegate> delegate;
+    time_ = std::make_shared<Time>(Time());
+    GlobalTime::provideGlobalTime(time_.get());
+    map_ = std::make_unique<Map>(Map());
+    Ship ship(200, 50, 3, "Black Pearl", 1, delegate.get(), time_.get());
+    player_ = std::make_shared<Player>(Player(ship, money, 200ul));
     delegate = player_;
-    ship.setDelegate(delegate);
-}
-
-Game::~Game() {
-    delete time_;
-    delete map_;
-    delete player_;
+    ship.setDelegate(delegate.get());
 }
 
 void Game::startGame() {
+    system("clear");
     std::cout << "Welcome in SHM, you have: " << days_
               << " days, to gain: " << money_ << " HAVE FUN!\n\n";
 
@@ -47,8 +42,8 @@ void Game::startGame() {
         if (option == 0) {
             break;
         }
-        makeAction(static_cast<Action>(option));
         system("clear");
+        makeAction(static_cast<Action>(option));
     }
     printLooseScreen();
 }
@@ -76,7 +71,7 @@ void Game::printOptions() {
               << "3) Buy\n"
               << "4) Check cargo\n"
               << "5) Exit\n\n"
-              << "Choice option: ";
+              << "Choose option: ";
 }
 
 void Game::printWinScreen() {
