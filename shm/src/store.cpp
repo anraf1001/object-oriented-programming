@@ -39,7 +39,7 @@ Response Store::sell(Cargo* cargo, size_t amount, Player* player) {
     }
 
     auto cargoIt = std::find_if(cargo_.begin(), cargo_.end(), [cargo](auto& cargoPtr) { return cargoPtr.get() == cargo; });
-    if (cargoIt == cargo_.end() or (*cargoIt)->getAmount() < amount) {
+    if (cargoIt == cargo_.end() || (*cargoIt)->getAmount() < amount) {
         return Response::lack_of_cargo;
     }
 
@@ -89,34 +89,35 @@ void Store::nextDay() {
 std::ostream& operator<<(std::ostream& out, const Store& store) {
     out << "Cargo that you can buy here:\n";
     out << "-----------------------------\n";
-    for (const auto& cargo : store.cargo_) {
-        out << "Product name: " << cargo->getName() << '\n';
-        out << "Amount: " << cargo->getAmount() << '\n';
-        out << "Price: " << cargo->getPrice() << '\n';
-        if (typeid(*cargo) == typeid(Alcohol)) {
-            auto alcohol = static_cast<Alcohol*>(cargo.get());
-            out << "Power: " << alcohol->getPower() << "%\n";
-        } else if (typeid(*cargo) == typeid(Fruit) || typeid(*cargo) == typeid(DryFruit)) {
-            auto fruit = static_cast<Fruit*>(cargo.get());
-            out << "Time to spoil: " << fruit->getTimeToSpoil() << '\n';
-        } else if (typeid(*cargo) == typeid(Item)) {
-            auto item = static_cast<Item*>(cargo.get());
-            switch (item->getRarity()) {
-            case Item::Rarity::common:
-                out << "Rarity: common\n";
-                break;
-            case Item::Rarity::epic:
-                out << "Rarity: epic\n";
-                break;
-            case Item::Rarity::legendary:
-                out << "Rarity: legendary\n";
-                break;
-            case Item::Rarity::rare:
-                out << "Rarity: rare\n";
-                break;
-            }
-        }
-        out << "-----------------------------\n";
-    }
+    std::for_each(store.cargo_.begin(), store.cargo_.end(),
+                  [&out, counter{1}](const auto& cargo) mutable {
+                      out << counter++ << ") " << cargo->getName() << '\n';
+                      out << "Amount: " << cargo->getAmount() << '\n';
+                      out << "Price: " << cargo->getPrice() << '\n';
+                      if (typeid(*cargo) == typeid(Alcohol)) {
+                          auto alcohol = static_cast<Alcohol*>(cargo.get());
+                          out << "Power: " << alcohol->getPower() << "%\n";
+                      } else if (typeid(*cargo) == typeid(Fruit) || typeid(*cargo) == typeid(DryFruit)) {
+                          auto fruit = static_cast<Fruit*>(cargo.get());
+                          out << "Time to spoil: " << fruit->getTimeToSpoil() << '\n';
+                      } else if (typeid(*cargo) == typeid(Item)) {
+                          auto item = static_cast<Item*>(cargo.get());
+                          switch (item->getRarity()) {
+                          case Item::Rarity::common:
+                              out << "Rarity: common\n";
+                              break;
+                          case Item::Rarity::epic:
+                              out << "Rarity: epic\n";
+                              break;
+                          case Item::Rarity::legendary:
+                              out << "Rarity: legendary\n";
+                              break;
+                          case Item::Rarity::rare:
+                              out << "Rarity: rare\n";
+                              break;
+                          }
+                      }
+                      out << "-----------------------------\n";
+                  });
     return out;
 }
