@@ -1,6 +1,7 @@
 #include "map.hpp"
 
 #include <algorithm>
+#include <iostream>
 #include <random>
 #include <set>
 #include <utility>
@@ -11,6 +12,11 @@ constexpr size_t kMapHeight = 50;
 
 Map::Map() {
     generateIslands();
+    currentPosition_ = &islands_.front();
+}
+
+void Map::travel(Island* destination) {
+    currentPosition_ = destination;
 }
 
 Island* Map::getIsland(const Coordinates& coordinates) {
@@ -41,4 +47,20 @@ void Map::generateIslands() {
                    [](auto x, auto y) {
                        return Island(x, y);
                    });
+}
+
+std::ostream& operator<<(std::ostream& out, const Map& map) {
+    out << "Islands that you can choose:\n";
+    out << "-----------------------------\n";
+    std::for_each(map.islands_.begin(), map.islands_.end(),
+                  [&, counter{1}](const auto& island) mutable {
+                      if (island.getPosition() != map.currentPosition_->getPosition()) {
+                          out << counter++ << ") Coordinates: ";
+                          out << island.getPosition();
+                          out << " Distance: "
+                              << Coordinates::distance(map.currentPosition_->getPosition(), island.getPosition()) << '\n';
+                      }
+                  });
+    out << "-----------------------------\n";
+    return out;
 }

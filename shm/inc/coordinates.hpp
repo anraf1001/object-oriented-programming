@@ -9,6 +9,7 @@ public:
         : positionX_(positionX), positionY_(positionY) {}
 
     bool operator==(const Coordinates& coordToCheck) const;
+    bool operator!=(const Coordinates& coordToCheck) const;
 
     static size_t distance(const Coordinates& lhs, const Coordinates& rhs);
 

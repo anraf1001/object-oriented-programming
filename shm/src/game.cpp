@@ -61,7 +61,7 @@ void Game::printMenu() {
               << " Day: " << time_->getElapsedTime()
               << " Days to end: " << days_ - time_->getElapsedTime()
               << " Position: "
-              << map_->getCurrentPosition() << "\n";
+              << map_->getCurrentPosition()->getPosition() << "\n";
 }
 
 void Game::printOptions() {
@@ -106,7 +106,10 @@ void Game::makeAction(Action action) {
 }
 
 void Game::travel() {
-    /*TODO*/
+    std::cout << *map_;
+    size_t option;
+    std::cout << "Choose Island: ";
+    std::cin >> option;
 }
 
 void Game::buy() {
