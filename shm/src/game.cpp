@@ -109,7 +109,17 @@ void Game::travel() {
     std::cout << *map_;
     size_t option;
     std::cout << "Choose Island: ";
+    std::cin.clear();
     std::cin >> option;
+
+    if (option < 1 || option > Map::kIslandAmt - 1) {
+        return;
+    }
+    size_t daysToArrive = map_->getDaysToArrive(option);
+    for (size_t i = 0; i < daysToArrive; i++) {
+        ++(*time_);
+    }
+    map_->travel(option);
 }
 
 void Game::buy() {
