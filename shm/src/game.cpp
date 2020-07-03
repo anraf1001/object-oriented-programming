@@ -39,7 +39,7 @@ void Game::startGame() {
         size_t option;
         std::cin.clear();
         std::cin >> option;
-        if (option == 0) {
+        if (option == 5) {
             break;
         }
         system("clear");
