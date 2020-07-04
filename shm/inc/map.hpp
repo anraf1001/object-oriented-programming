@@ -21,6 +21,7 @@ public:
 
 private:
     void generateIslands();
+
     std::vector<Island> islands_;
     Island* currentPosition_;
 };

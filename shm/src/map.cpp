@@ -6,6 +6,8 @@
 #include <set>
 #include <utility>
 
+#include "store.hpp"
+
 constexpr size_t kMapWidth = 50;
 constexpr size_t kMapHeight = 50;
 
