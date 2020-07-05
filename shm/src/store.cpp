@@ -95,8 +95,8 @@ Item::Rarity Store::generateRarity() {
 
 void Store::generateFruit() {
     size_t quantity = generateQuantity();
-    std::shared_ptr<Cargo> cargo = std::make_shared<Fruit>(Fruit("orange", quantity, generatePrice(), generateExpDate()));
-    receiveCargo(cargo.get(), quantity, this);
+    std::unique_ptr<Cargo> cargo = std::make_unique<Fruit>(Fruit("orange", quantity, generatePrice(), generateExpDate()));
+    receiveCargo(std::move(cargo.get()), quantity, this);
 }
 
 void Store::generateDryFruit() {
@@ -106,14 +106,14 @@ void Store::generateDryFruit() {
 
 void Store::generateAlcohol() {
     size_t quantity = generateQuantity();
-    std::shared_ptr<Cargo> cargo = std::make_shared<Alcohol>(Alcohol("vodka", quantity, generatePrice(), 40.f));
-    receiveCargo(cargo.get(), quantity, this);
+    std::unique_ptr<Cargo> cargo = std::make_unique<Alcohol>(Alcohol("vodka", quantity, generatePrice(), 40.f));
+    receiveCargo(std::move(cargo.get()), quantity, this);
 }
 
 void Store::generateItem() {
     size_t quantity = generateQuantity();
-    std::shared_ptr<Cargo> cargo = std::make_shared<Item>(Item("sword", quantity, generatePrice(), generateRarity()));
-    receiveCargo(cargo.get(), quantity, this);
+    std::unique_ptr<Cargo> cargo = std::make_unique<Item>(Item("sword", quantity, generatePrice(), generateRarity()));
+    receiveCargo(std::move(cargo.get()), quantity, this);
 }
 
 Response Store::buy(Cargo* cargo, size_t amount, Player* player) {
