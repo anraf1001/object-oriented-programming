@@ -6,10 +6,12 @@
 #include "alcohol.hpp"
 #include "dryfruit.hpp"
 #include "fruit.hpp"
+#include "globaltime.hpp"
 
 Store::Store(Time* time)
     : time_(time) {
     time_->addObserver(this);
+    GlobalTime::provideGlobalTime(time_);
     generateCargo();
 }
 
