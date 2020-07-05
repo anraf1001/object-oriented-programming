@@ -99,6 +99,7 @@ void Game::makeAction(Action action) {
         break;
     case Action::checkCargo:
         printCargo();
+        break;
     default:
         std::cout << "Wrong action!\n";
         break;
