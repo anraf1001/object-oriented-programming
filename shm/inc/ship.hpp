@@ -22,7 +22,6 @@ public:
     size_t getCapacity() const { return capacity_; }
     size_t getMaxCrew() const { return maxCrew_; }
     size_t getSpeed() const { return speed_; }
-    std::vector<std::shared_ptr<Cargo>>& getAllCargo() { return cargo_; }
     std::string getName() const { return name_; }
     int getId() const { return id_; }
     void setDelegate(Delegate* delegate) { payCrew = delegate; }
@@ -38,6 +37,7 @@ public:
     void unload(const Cargo* const& cargo);
 
     /* override from CargoHolder */
+    const std::vector<std::shared_ptr<Cargo>>& getAllCargo() const override { return cargo_; };
     void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
     void clearEmptyCargos() override;
     //override from Observer
@@ -46,7 +46,7 @@ public:
     ~Ship() override;
 
 private:
-    std::vector<std::shared_ptr<Cargo>> cargo_;
+    std::vector<std::shared_ptr<Cargo>> cargo_ = {};
     size_t capacity_;
     size_t maxCrew_;
     size_t crew_;

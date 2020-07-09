@@ -24,6 +24,7 @@ public:
     void clearEmptyCargo() { ship_->clearEmptyCargo(); };
 
     /* override from CargoHolder through its ship */
+    const std::vector<std::shared_ptr<Cargo>>& getAllCargo() const override { return ship_->getAllCargo(); }
     void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
     void clearEmptyCargos() override;
 

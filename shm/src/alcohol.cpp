@@ -16,6 +16,10 @@ size_t Alcohol::getPrice() const {
     return static_cast<size_t>(static_cast<float>(basePrice_) * (power_ / kBasePower));
 }
 
+std::string Alcohol::oneLineDescription() const {
+    return Cargo::oneLineDescription() + "\tPower: " + std::to_string(getPower());
+}
+
 void Alcohol::nextDay() {
     return;
 }

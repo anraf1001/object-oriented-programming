@@ -1,6 +1,7 @@
 #include "game.hpp"
 
 #include <algorithm>
+#include <iostream>
 
 #include "cargo.hpp"
 #include "globaltime.hpp"
@@ -123,19 +124,59 @@ void Game::travel() {
     map_->travel(option);
 }
 
+Game::BuySellAction Game::buySellChoice(const CargoHolder* const sourceCargoHolder) const {
+    Game::BuySellAction action;
+    auto& availableCargos = sourceCargoHolder->getAllCargo();
+    sourceCargoHolder->printAllCargoOwned();
+
+    std::cout << "Choose cargo:\n";
+    std::cin.clear();
+    size_t option;
+    std::cin >> option;
+    if (option < 1 || option > availableCargos.size()) {
+        std::cout << "Invalid choice\n";
+        action.valid = false;
+        return action;
+    }
+    action.option = option;
+
+    std::cout << "Choose amount:\n";
+    std::cin.clear();
+    size_t amount;
+    std::cin >> amount;
+    if (amount < 1 || amount > availableCargos[option]->getAmount()) {
+        std::cout << "Invalid amount\n";
+        action.valid = false;
+        return action;
+    }
+    action.amount = amount;
+    action.valid = true;
+    return action;
+}
+
 void Game::buy() {
-    /*TODO*/
+    auto store = map_->getCurrentPosition()->getStore();
+    Game::BuySellAction action = buySellChoice(store);
+
+    if (!action.valid)
+        return;
+    auto& availableCargos = store->getAllCargo();
+
+    store->sell(availableCargos[action.option - 1].get(), action.amount, player_.get());
 }
 
 void Game::sell() {
-    /*TODO*/
+    auto store = map_->getCurrentPosition()->getStore();
+    auto player = player_;
+    Game::BuySellAction action = buySellChoice(player.get());
+
+    if (!action.valid)
+        return;
+    auto& availableCargos = player->getAllCargo();
+
+    store->buy(availableCargos[action.option - 1].get(), action.amount, player_.get());
 }
 
 void Game::printCargo() {
-    const auto cargo = player_->getShip()->getAllCargo();
-    std::for_each(cargo.begin(), cargo.end(),
-                  [counter{1}](const std::shared_ptr<Cargo> item) mutable {
-                      std::cout << counter++ << ") " << item->getName() << "\t"
-                                << "Amount: " << item->getAmount() << "\n";
-                  });
+    player_->printAllCargoOwned();
 }

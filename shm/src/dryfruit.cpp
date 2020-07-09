@@ -14,6 +14,10 @@ size_t DryFruit::getPrice() const {
     return Fruit::getPrice() * kDrynessPriceMultiplier;
 }
 
+std::string DryFruit::oneLineDescription() const {
+    return Fruit::oneLineDescription() + " (dry)";
+}
+
 void DryFruit::nextDay() {
     this->operator--();
 }

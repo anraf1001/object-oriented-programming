@@ -23,6 +23,10 @@ size_t Fruit::getPrice() const {
     return static_cast<size_t>((static_cast<float>(leftTime_) / static_cast<float>(timeToSpoil_)) * static_cast<float>(basePrice_));
 }
 
+std::string Fruit::oneLineDescription() const {
+    return Cargo::oneLineDescription() + "\tFreshness: " + std::to_string(getLeftTime()) + "/" + std::to_string(getTimeToSpoil());
+}
+
 void Fruit::nextDay() {
     --leftTime_;
 }
