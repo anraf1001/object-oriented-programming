@@ -10,7 +10,7 @@ Item::Item(const std::string& name, size_t amount, size_t basePrice, Rarity rari
 }
 
 size_t Item::getPrice() const {
-    return basePrice_ * priceMultipliers_.at(rarity_);
+    return basePrice_ * static_cast<int>(rarity_);
 }
 
 void Item::nextDay() {
