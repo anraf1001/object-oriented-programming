@@ -102,8 +102,9 @@ void Store::generateFruit() {
 }
 
 void Store::generateDryFruit() {
-    //TODO: Change to DryFruit
-    generateFruit();
+    size_t quantity = generateQuantity();
+    std::unique_ptr<Cargo> cargo = std::make_unique<DryFruit>(DryFruit("orange", quantity, generatePrice(), generateExpDate()));
+    receiveCargo(std::move(cargo.get()), quantity, this);
 }
 
 void Store::generateAlcohol() {
