@@ -18,7 +18,7 @@ public:
     size_t getPrice() const override;
     std::shared_ptr<Cargo> getShared() override { return std::make_shared<DryFruit>(DryFruit(*this)); }
 
-    //override from Observer
+    //override from Time::Observer
     void nextDay() override;
 
     ~DryFruit() override;

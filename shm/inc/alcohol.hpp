@@ -24,7 +24,7 @@ public:
     Cargo& operator-=(size_t amount) override;
     std::shared_ptr<Cargo> getShared() override { return std::make_shared<Alcohol>(Alcohol(*this)); }
 
-    //Override from Observer
+    //Override from Time::Observer
     void nextDay() override;
 
 private:
