@@ -6,7 +6,7 @@
 #include "ship.hpp"
 
 class Player : public CargoHolder,
-               public Delegate {
+               public Ship::Delegate {
 public:
     Player(Ship& ship, size_t money, size_t availableSpace);
 
@@ -15,7 +15,7 @@ public:
     size_t getavailableSpace() const { return availableSpace_; }
     size_t getSpeed() const { return ship_->getSpeed(); }
     std::shared_ptr<Cargo> getCargo(size_t index) const { return ship_->getCargo(index); }
-    //Override from Delegate
+    //Override from Ship::Delegate
     void payCrew(size_t money) override;
 
     virtual ~Player() {}

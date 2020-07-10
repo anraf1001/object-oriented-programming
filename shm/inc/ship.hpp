@@ -5,12 +5,17 @@
 
 #include "cargo.hpp"
 #include "cargoHolder.hpp"
-#include "delegate.hpp"
 #include "time.hpp"
 
 class Ship : public CargoHolder,
              public Time::Observer {
 public:
+    class Delegate {
+    public:
+        virtual void payCrew(size_t money) = 0;
+        virtual ~Delegate() {}
+    };
+
     Ship();
 
     Ship(int capacity, int maxCrew, int speed, const std::string& name, unsigned int id, Delegate* delegate = nullptr, Time* time = nullptr);
