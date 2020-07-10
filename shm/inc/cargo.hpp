@@ -3,9 +3,9 @@
 #include <memory>
 #include <string>
 
-#include "observer.hpp"
+#include "time.hpp"
 
-class Cargo : public Observer {
+class Cargo : public Time::Observer {
 public:
     Cargo(const std::string& name, size_t amount, size_t basePrice);
     virtual ~Cargo() = default;

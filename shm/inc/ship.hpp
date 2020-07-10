@@ -9,7 +9,7 @@
 #include "time.hpp"
 
 class Ship : public CargoHolder,
-             public Observer {
+             public Time::Observer {
 public:
     Ship();
 
@@ -40,7 +40,7 @@ public:
     const std::vector<std::shared_ptr<Cargo>>& getAllCargo() const override { return cargo_; };
     void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
     void clearEmptyCargos() override;
-    //override from Observer
+    //override from Time::Observer
     void nextDay() override;
 
     ~Ship() override;

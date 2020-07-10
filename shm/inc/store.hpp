@@ -16,7 +16,7 @@ enum class Response {
 };
 
 class Store : public CargoHolder,
-              public Observer {
+              public Time::Observer {
 public:
     enum class CargoType {
         Fruit,
@@ -38,7 +38,7 @@ public:
     void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
     void clearEmptyCargos() override;
 
-    /* override from Observer */
+    /* override from Time::Observer */
     void nextDay();
 
     friend std::ostream& operator<<(std::ostream& out, const Store& store);
