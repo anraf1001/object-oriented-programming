@@ -12,7 +12,7 @@ const std::string line(80, '=');
 
 Game::Game(size_t money, size_t days, size_t finalGoal)
     : money_(money), days_(days), finalGoal_(finalGoal) {
-    std::shared_ptr<Delegate> delegate;
+    std::shared_ptr<Ship::Delegate> delegate;
     time_ = std::make_shared<Time>();
     GlobalTime::provideGlobalTime(time_.get());
     map_ = std::make_unique<Map>(Map());

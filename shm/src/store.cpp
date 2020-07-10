@@ -1,6 +1,7 @@
 #include "store.hpp"
 
 #include <algorithm>
+#include <iostream>
 #include <random>
 
 #include "alcohol.hpp"
