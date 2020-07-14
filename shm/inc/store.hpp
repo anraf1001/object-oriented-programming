@@ -34,6 +34,7 @@ public:
     Response sell(Cargo* cargo, size_t amount, Player* player);
 
     /* override from CargoHolder */
+    const std::vector<std::shared_ptr<Cargo>>& getAllCargo() const override { return cargo_; };
     void receiveCargo(Cargo* cargo, size_t amount, CargoHolder* cargoHolder) override;
     void clearEmptyCargos() override;
 
@@ -56,6 +57,6 @@ private:
     size_t generateExpDate();
     Item::Rarity generateRarity();
 
-    std::vector<std::shared_ptr<Cargo>> cargo_;
+    std::vector<std::shared_ptr<Cargo>> cargo_ = {};
     Time* time_;
 };

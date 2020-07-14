@@ -10,6 +10,7 @@ public:
                         rare = 2,
                         epic = 4,
                         legendary = 8 };
+    static const std::map<Item::Rarity, std::string> rarityStringMapping;
 
     Item(const std::string& name, size_t amount, size_t basePrice, Rarity rarity);
 
@@ -22,6 +23,7 @@ public:
     size_t getAmount() const override { return amount_; }
     size_t getBasePrice() const override { return basePrice_; }
     size_t getPrice() const override;
+    std::string oneLineDescription() const override;
     bool operator==(const Cargo& cargoToCheck) const override;
     Cargo& operator+=(size_t amount) override;
     Cargo& operator-=(size_t amount) override;

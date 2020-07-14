@@ -1,5 +1,4 @@
 #pragma once
-#include <iostream>
 
 #include "map.hpp"
 #include "player.hpp"
@@ -18,6 +17,12 @@ public:
     void startGame();
 
 private:
+    struct BuySellAction {
+        size_t option = 0;
+        size_t amount = 0;
+        bool valid = false;
+    };
+
     bool checkWinCondition() const;
     bool checkLooseCondition() const;
     void printMenu();
@@ -29,6 +34,7 @@ private:
     void buy();
     void sell();
     void printCargo();
+    BuySellAction buySellChoice(const CargoHolder* const sourceCargoHolder) const;
 
     size_t money_;
     size_t days_;
